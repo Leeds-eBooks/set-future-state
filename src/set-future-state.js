@@ -3,8 +3,13 @@
 import {Component, PureComponent} from 'react'
 import {isFuture, tryP} from 'fluture'
 
+const getErrorTarget = ({constructor}) => {
+  const name = constructor.displayName || constructor.name
+  return name ? ` Check your ${name} component.` : ''
+}
+
 const create = SuperClass =>
-  class PureComponentFutureState<P, S> extends SuperClass<P, S> {
+  class FutureState<P, S> extends SuperClass<P, S> {
     _cancels: Array<() => void> = []
 
     // FIXME: prevent (or handle) overriding – monkey-patch? Inject?
@@ -18,13 +23,10 @@ const create = SuperClass =>
       onError?: Error => mixed
     ) {
       if (!(isFuture(eventual) || typeof eventual === 'function')) {
-        // TODO: add Component info
         throw new TypeError(
-          `The first argument to setFutureState() must be a Future or a Function which returns a Promise.${
-            this.constructor.name
-              ? ` Check your ${this.constructor.name} component.`
-              : ''
-          }`
+          `The first argument to setFutureState() must be a Future or a Function which returns a Promise.${getErrorTarget(
+            this
+          )}`
         )
       }
 
@@ -41,5 +43,8 @@ const create = SuperClass =>
     }
   }
 
-export const ComponentFutureState = create(Component)
-export const PureComponentFutureState = create(PureComponent)
+export class ComponentFutureState<P, S> extends create(Component)<P, S> {}
+export class PureComponentFutureState<P, S> extends create(PureComponent)<
+  P,
+  S
+> {}

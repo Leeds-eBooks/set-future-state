@@ -1,0 +1,6 @@
+extends: mealsup
+overrides:
+  - files: "**/*.test.js"
+    rules:
+      fp/no-let: 0
+      fp/no-mutation: 0

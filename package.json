@@ -1,0 +1,78 @@
+{
+  "name": "set-future-state",
+  "version": "0.0.1",
+  "description": "Safely setState in the future",
+  "main": "lib/set-future-state.js",
+  "files": [
+    "lib"
+  ],
+  "engines": {
+    "node": ">=6"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "runkitExample": "const {ComponentFutureState} = require('set-future-state')",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "yarn lint && yarn run flow check && jest",
+    "build": "babel src --out-dir lib --ignore src/set-future-state.test.js,src/flow-tests.js && cp src/set-future-state.js.flow lib",
+    "prepare": "yarn build",
+    "release": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leeds-eBooks/set-future-state.git"
+  },
+  "keywords": [
+    "javascript",
+    "react",
+    "react-native",
+    "setState",
+    "future",
+    "promise"
+  ],
+  "author": "benstyles",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Leeds-eBooks/set-future-state/issues"
+  },
+  "homepage": "https://github.com/Leeds-eBooks/set-future-state#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-mealsup": "^2.4.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-eslint-comments": "^2.0.2",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-react-native": "^3.2.1",
+    "flow-bin": "^0.68.0",
+    "flow-typed": "^2.4.0",
+    "jest": "^22.4.3",
+    "react": "^16.0.0",
+    "react-test-renderer": "^16.2.0",
+    "release-it": "^7.2.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": false,
+    "semi": false,
+    "jsxBracketSameLine": true
+  },
+  "dependencies": {
+    "fluture": "^8.0.2"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  }
+}
