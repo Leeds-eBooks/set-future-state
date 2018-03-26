@@ -77,7 +77,7 @@ describe('PureComponentFutureState', () => {
         expect(onError).not.toHaveBeenCalled()
         instance.trigger()
         expect(onError).not.toHaveBeenCalled()
-        await wait(2)
+        await wait(3)
         expect(onError).toHaveBeenCalledWith(expect.any(Error))
       })
 
@@ -91,7 +91,7 @@ describe('PureComponentFutureState', () => {
         expect(onError).not.toHaveBeenCalled()
         instance.trigger()
         expect(onError).not.toHaveBeenCalled()
-        await wait(2)
+        await wait(3)
         expect(onError).toHaveBeenCalledWith(expect.any(Error))
       })
     })

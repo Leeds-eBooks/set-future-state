@@ -15,7 +15,8 @@
   "runkitExample": "const {ComponentFutureState} = require('set-future-state')",
   "scripts": {
     "lint": "eslint .",
-    "test": "yarn lint && yarn run flow check && jest",
+    "test": "yarn lint && yarn run flow check && jest --silent --coverage",
+    "posttest": "jest-coverage-ratchet",
     "build": "babel src --out-dir lib --ignore src/set-future-state.test.js,src/flow-tests.js && cp src/set-future-state.js.flow lib",
     "prepare": "yarn build",
     "release": "release-it"
@@ -42,6 +43,7 @@
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
@@ -58,6 +60,7 @@
     "flow-bin": "^0.68.0",
     "flow-typed": "^2.4.0",
     "jest": "^22.4.3",
+    "jest-coverage-ratchet": "^0.2.3",
     "react": "^16.0.0",
     "react-test-renderer": "^16.2.0",
     "release-it": "^7.2.1"
@@ -68,6 +71,21 @@
     "bracketSpacing": false,
     "semi": false,
     "jsxBracketSameLine": true
+  },
+  "jest": {
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "json-summary"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 100,
+        "statements": 100,
+        "functions": 100,
+        "branches": 91.67
+      }
+    }
   },
   "dependencies": {
     "fluture": "^8.0.2"

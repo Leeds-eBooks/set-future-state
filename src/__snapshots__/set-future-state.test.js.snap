@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PureComponentFutureState setFutureState cancelling raw setState triggers the React warning 1`] = `
+"Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.
+
+Please check the code for the TestWithResetWarnings-1 component."
+`;
+
+exports[`PureComponentFutureState setFutureState cancelling raw setState triggers the React warning with async 1`] = `
+"Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.
+
+Please check the code for the TestWithResetWarnings-2 component."
+`;
+
+exports[`PureComponentFutureState setFutureState throws for an incorrect first argument 1`] = `
+"The first argument to setFutureState() must be a Future or a Function which returns a Promise.
+
+Please check the code for the Test component."
+`;

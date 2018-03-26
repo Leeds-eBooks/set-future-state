@@ -5,7 +5,7 @@ import {isFuture, tryP} from 'fluture'
 
 const getErrorTarget = ({constructor}) => {
   const name = constructor.displayName || constructor.name
-  return name ? ` Check your ${name} component.` : ''
+  return name ? `\n\nPlease check the code for the ${name} component.` : ''
 }
 
 const create = SuperClass =>
