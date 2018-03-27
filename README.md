@@ -12,9 +12,11 @@ yarn add set-future-state
 
 # The Problem
 
-> ```
-> Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.
-> ```
+```
+Warning: Can only update a mounted or mounting component.
+This usually means you called setState, replaceState,
+or forceUpdate on an unmounted component. This is a no-op.
+```
 
 In React, calling `this.setState()` in an `async` function, or in the `.then()` method of a `Promise`, is very common and very useful. But if your component is unmounted before your async/promise resolves, you’ll get the above error in your console. The React blog [suggests](https://reactjs.org/blog/2015/12/16/ismounted-antipattern.html) using cancelable Promises, but as [Aldwin Vlasblom](https://github.com/Avaq) [explains](https://medium.com/@avaq/broken-promises-2ae92780f33):
 
