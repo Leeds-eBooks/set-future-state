@@ -115,7 +115,7 @@ describe('PureComponentFutureState', () => {
           expect(reducer).not.toHaveBeenCalled()
           instance.trigger()
           expect(reducer).not.toHaveBeenCalled()
-          await wait(2)
+          await wait(3)
           expect(reducer).toHaveBeenCalledWith(
             5,
             {loading: false},
@@ -129,7 +129,7 @@ describe('PureComponentFutureState', () => {
           expect(reducer).not.toHaveBeenCalled()
           instance.trigger()
           expect(reducer).not.toHaveBeenCalled()
-          await wait(2)
+          await wait(3)
           expect(reducer).toHaveBeenCalledWith(
             5,
             {loading: false},
@@ -154,7 +154,7 @@ describe('PureComponentFutureState', () => {
           expect(reducer).not.toHaveBeenCalled()
           instance.trigger()
           expect(reducer).not.toHaveBeenCalled()
-          await wait(2)
+          await wait(3)
           expect(reducer).toHaveBeenCalledWith(
             5,
             {loading: false},
@@ -172,7 +172,7 @@ describe('PureComponentFutureState', () => {
           expect(reducer).not.toHaveBeenCalled()
           instance.trigger()
           expect(reducer).not.toHaveBeenCalled()
-          await wait(2)
+          await wait(3)
           expect(reducer).toHaveBeenCalledWith(
             5,
             {loading: false},
@@ -210,7 +210,7 @@ describe('PureComponentFutureState', () => {
           expect(setStateSpy).not.toHaveBeenCalled()
           instance.trigger()
           expect(setStateSpy).not.toHaveBeenCalled()
-          await wait(2)
+          await wait(3)
           expect(setStateSpy).toHaveBeenCalled()
           expect(instance.state).toEqual({
             v: 5,
@@ -235,7 +235,7 @@ describe('PureComponentFutureState', () => {
           expect(setStateSpy).not.toHaveBeenCalled()
           instance.trigger()
           expect(setStateSpy).not.toHaveBeenCalled()
-          await wait(2)
+          await wait(3)
           expect(setStateSpy).toHaveBeenCalled()
           expect(instance.state).toEqual({
             v: 5,
@@ -279,7 +279,7 @@ describe('PureComponentFutureState', () => {
 
         it('triggers the React warning with async', async () => {
           p().then(v => instance.setState({v}))
-          await wait(2)
+          await wait(3)
           render.unmount()
           expect(setStateSpy).not.toHaveBeenCalled()
           expect(consoleSpy).not.toHaveBeenCalled()
@@ -293,7 +293,7 @@ describe('PureComponentFutureState', () => {
       describe('setFutureState', () => {
         it('doesn’t trigger the React warning', async () => {
           instance.trigger()
-          await wait(2)
+          await wait(3)
           render.unmount()
           expect(setStateSpy).not.toHaveBeenCalled()
           expect(consoleSpy).not.toHaveBeenCalled()
