@@ -20,7 +20,7 @@ const create = SuperClass =>
     setFutureState<E, V>(
       eventual: Future<E, V> | (() => Promise<V>),
       reducer: (value?: V, prevState: S, props: P) => $Shape<S> | null,
-      onError?: E => void
+      onError?: E => *
     ) {
       if (!(isFuture(eventual) || typeof eventual === 'function')) {
         throw new TypeError(

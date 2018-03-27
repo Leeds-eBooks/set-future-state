@@ -5,7 +5,7 @@ type Cancel = () => void
 declare class Future<E, V> {
   mapRej<M>(f: (error: E) => M): Future<M, V>;
 
-  fork(onReject: (error: E) => void, onResolve: (value: V) => void): Cancel;
+  fork(onReject: (error: E) => *, onResolve: (value: V) => void): Cancel;
   done(callback: (error: ?E, value?: V) => void): Cancel;
 }
 
