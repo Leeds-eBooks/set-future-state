@@ -1,6 +1,6 @@
 {
   "name": "set-future-state",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Safely setState in the future",
   "main": "lib/set-future-state.js",
   "files": [
