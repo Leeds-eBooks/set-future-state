@@ -3,18 +3,18 @@
 // eslint-disable-next-line no-unused-vars
 import {Component, PureComponent} from 'react'
 
-type Eventual<V> = Future<V> | (() => Promise<V>)
+type Eventual<E, V> = Future<E, V> | (() => Promise<V>)
 type Reducer<V, P, S> = (value?: V, prevState: S, props: P) => $Shape<S> | null
-type OnError = Error => mixed
+type OnError<E> = E => void
 type Cancels = Array<() => void>
 
 declare export class ComponentFutureState<P, S> extends Component<P, S> {
   _cancels: Cancels;
 
-  setFutureState<V>(
-    eventual: Eventual<V>,
+  setFutureState<E, V>(
+    eventual: Eventual<E, V>,
     reducer: Reducer<V, P, S>,
-    onError?: OnError
+    onError?: OnError<E>
   ): void;
 }
 
@@ -24,9 +24,9 @@ declare export class PureComponentFutureState<P, S> extends PureComponent<
 > {
   _cancels: Cancels;
 
-  setFutureState<V>(
-    eventual: Eventual<V>,
+  setFutureState<E, V>(
+    eventual: Eventual<E, V>,
     reducer: Reducer<V, P, S>,
-    onError?: OnError
+    onError?: OnError<E>
   ): void;
 }

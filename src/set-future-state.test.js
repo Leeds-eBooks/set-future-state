@@ -10,7 +10,7 @@ const wait = (ms: number): Promise<void> =>
 
 type Props = {
   // flowlint-next-line unclear-type:off
-  eventual: Future<any> | (() => Promise<any>),
+  eventual: Future<any, any> | (() => Promise<any>),
   reducer: *,
   onError?: *,
 }
@@ -124,7 +124,7 @@ describe('PureComponentFutureState', () => {
         })
 
         it('is called for a resolved with defined onError', async () => {
-          render.update(React.cloneElement(test, {onError: () => null}))
+          render.update(React.cloneElement(test, {onError: () => void 0}))
 
           expect(reducer).not.toHaveBeenCalled()
           instance.trigger()
@@ -165,7 +165,7 @@ describe('PureComponentFutureState', () => {
         it('is called for a resolved with defined onError', async () => {
           render.update(
             React.cloneElement(cloned, {
-              onError: () => null,
+              onError: () => void 0,
             })
           )
 

@@ -17,10 +17,10 @@ const create = SuperClass =>
       this._cancels.forEach(fn => fn())
     }
 
-    setFutureState<V>(
-      eventual: Future<V> | (() => Promise<V>),
+    setFutureState<E, V>(
+      eventual: Future<E, V> | (() => Promise<V>),
       reducer: (value?: V, prevState: S, props: P) => $Shape<S> | null,
-      onError?: Error => mixed
+      onError?: E => void
     ) {
       if (!(isFuture(eventual) || typeof eventual === 'function')) {
         throw new TypeError(
