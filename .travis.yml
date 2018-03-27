@@ -9,4 +9,4 @@ install:
   - yarn install
   - yarn check --integrity
 script:
-  - yarn test
+  - yarn run test:all

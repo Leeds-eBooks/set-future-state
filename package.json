@@ -15,8 +15,11 @@
   "runkitExample": "const {ComponentFutureState} = require('set-future-state')",
   "scripts": {
     "lint": "eslint .",
-    "test": "yarn lint && yarn run flow check && jest --silent --coverage",
+    "pretest:lib": "yarn build",
+    "test:lib": "jest --silent --config=\"{\\\"moduleNameMapper\\\":{\\\"^./set-future-state$\\\":\\\"<rootDir>/lib/set-future-state\\\"}}\"",
+    "test": "jest --silent --coverage",
     "posttest": "jest-coverage-ratchet",
+    "test:all": "yarn lint && yarn run flow check && yarn test && yarn run test:lib",
     "build": "babel src --out-dir lib --ignore src/set-future-state.test.js,src/flow-tests.js && cp src/set-future-state.js.flow lib",
     "prepare": "yarn build",
     "release": "release-it"
