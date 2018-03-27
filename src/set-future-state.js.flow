@@ -5,7 +5,7 @@ import {Component, PureComponent} from 'react'
 
 type Eventual<V> = Future<V> | (() => Promise<V>)
 type Reducer<V, P, S> = (value?: V, prevState: S, props: P) => $Shape<S> | null
-type OnError = mixed => mixed
+type OnError = Error => mixed
 type Cancels = Array<() => void>
 
 declare export class ComponentFutureState<P, S> extends Component<P, S> {
