@@ -34,7 +34,8 @@
     "react-native",
     "setState",
     "future",
-    "promise"
+    "promise",
+    "cancellation"
   ],
   "author": "benstyles",
   "license": "MIT",
