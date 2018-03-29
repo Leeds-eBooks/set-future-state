@@ -2,13 +2,13 @@
 
 import type {Component} from 'react'
 
-type SetFutureState<E, V, P, S> = (
+type SetFutureState<P, S> = <E, V>(
   self: Component<P, S>,
   eventual: Future<E, V> | (() => Promise<V>),
   reducer: (value?: V, prevState: S, props: P) => $Shape<S> | null,
-  onError?: (E) => *
+  onError?: (error: E) => *
 ) => void
 
-declare export default function withFutureState<E, V, P, S>(
-  builder: (SetFutureState<E, V, P, S>) => Class<Component<P, S>>
+declare export default function withFutureState<P, S>(
+  builder: (SetFutureState<P, S>) => Class<Component<P, S>>
 ): Class<Component<P, S>>

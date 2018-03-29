@@ -9,15 +9,15 @@ const getErrorTarget = ({constructor}) => {
   return name ? `\n\nPlease check the code for the ${name} component.` : ''
 }
 
-type SetFutureState<E, V, P, S> = (
+type SetFutureState<P, S> = <E, V>(
   self: Component<P, S>,
   eventual: Future<E, V> | (() => Promise<V>),
   reducer: (value?: V, prevState: S, props: P) => $Shape<S> | null,
-  onError?: (E) => *
+  onError?: (error: E) => *
 ) => void
 
-export default <E, V, P, S>(
-  builder: (SetFutureState<E, V, P, S>) => Class<Component<P, S>>
+export default <P, S>(
+  builder: (SetFutureState<P, S>) => Class<Component<P, S>>
 ) => {
   const cancels: Array<() => void> = []
 
@@ -32,7 +32,8 @@ export default <E, V, P, S>(
 
     const future = typeof eventual === 'function' ? tryP(eventual) : eventual
 
-    const resolver = (v?: V) =>
+    const resolver = v =>
+      // $FlowFixMe
       self.setState((prevState, props) => reducer(v, prevState, props))
 
     cancels.push(
