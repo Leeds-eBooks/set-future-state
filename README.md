@@ -25,7 +25,7 @@ Enter [Futures](https://github.com/fluture-js/Fluture/wiki/Comparison-to-Promise
 This library has a single default export: the function `withFutureState()`.
 
 <details>
-<summary><code>withFutureState()</code> type signature (in [flow](https://flow.org/) notation)</summary>
+<summary><code>withFutureState()</code> type signature (in <a href="https://flow.org/">flow</a> notation)</summary>
 
 ```js
 type SetFutureState<P, S> = <E, V>(
