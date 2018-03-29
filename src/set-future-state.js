@@ -17,7 +17,7 @@ type SetFutureState<P, S> = <E, V>(
 ) => void
 
 export default <P, S>(
-  builder: (SetFutureState<P, S>) => Class<Component<P, S>>
+  factory: (SetFutureState<P, S>) => Class<Component<P, S>>
 ) => {
   const cancels: Array<() => void> = []
 
@@ -43,7 +43,7 @@ export default <P, S>(
     )
   }
 
-  const UserComponent = builder(setFutureState)
+  const UserComponent = factory(setFutureState)
 
   return class WithFutureState extends UserComponent {
     static displayName = `WithFutureState(${getDisplayName(UserComponent)})`

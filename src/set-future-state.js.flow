@@ -10,5 +10,5 @@ type SetFutureState<P, S> = <E, V>(
 ) => void
 
 declare export default function withFutureState<P, S>(
-  builder: (setFutureState: SetFutureState<P, S>) => Class<Component<P, S>>
+  factory: (setFutureState: SetFutureState<P, S>) => Class<Component<P, S>>
 ): Class<Component<P, S>>
