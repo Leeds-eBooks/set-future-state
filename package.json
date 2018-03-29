@@ -87,12 +87,13 @@
         "lines": 100,
         "statements": 100,
         "functions": 100,
-        "branches": 91.67
+        "branches": 78.57
       }
     }
   },
   "dependencies": {
-    "fluture": "^8.0.2"
+    "fluture": "^8.0.2",
+    "recompose": "^0.26.0"
   },
   "peerDependencies": {
     "react": "^16.0.0"

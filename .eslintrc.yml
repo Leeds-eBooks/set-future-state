@@ -1,4 +1,8 @@
 extends: mealsup
+
+rules:
+  react-native/no-unused-styles: 0
+
 overrides:
   - files: "**/*.test.js"
     rules:
