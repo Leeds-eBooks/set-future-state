@@ -1946,15 +1946,15 @@ eslint-ast-utils@^1.0.0:
     lodash.get "^4.4.2"
     lodash.zip "^4.2.0"
 
-eslint-config-mealsup@^2.4.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-mealsup/-/eslint-config-mealsup-2.5.0.tgz#1e3518c9b6e565e84f4357a64816c5e33ea6dfc8"
+eslint-config-mealsup@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-mealsup/-/eslint-config-mealsup-2.5.2.tgz#1120c34efb34726b8a916487638d93d0e103df21"
   dependencies:
-    eslint-config-rapt "^1.4.0"
+    eslint-config-rapt "^1.4.1"
 
-eslint-config-rapt@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-rapt/-/eslint-config-rapt-1.4.0.tgz#9f130f7883172894ef07b784f4c6b4441cd72420"
+eslint-config-rapt@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-rapt/-/eslint-config-rapt-1.4.1.tgz#26174da07d769dc9fa4008e508908738fa0fb779"
 
 eslint-import-resolver-node@^0.3.1:
   version "0.3.2"
