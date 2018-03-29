@@ -22,6 +22,28 @@ Enter [Futures](https://github.com/fluture-js/Fluture/wiki/Comparison-to-Promise
 
 # The Solution
 
+This library has a single default export: the function `withFutureState()`.
+
+<details>
+<summary><code>withFutureState()</code> type signature (in [flow](https://flow.org/) notation)</summary>
+
+```js
+type SetFutureState<P, S> = <E, V>(
+  self: Component<P, S>,
+  eventual: Future<E, V> | (() => Promise<V>),
+  reducer: (value?: V, prevState: S, props: P) => $Shape<S> | null,
+  onError?: (error: E) => *
+) => void
+
+declare export default function withFutureState<P, S>(
+  builder: (setFutureState: SetFutureState<P, S>) => Class<Component<P, S>>
+): Class<Component<P, S>>
+```
+
+</details>
+
+`withFutureState()` is an [Inheritance Inversion Higher-Order Component](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#5247). It takes a single argument, a function, which must return a React Class Component (i.e. a [class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) that inherits from `React.Component` or `React.PureComponent`). That function receives a single argument, `setFutureState`: your tool for safely updating your component's state in the future.
+
 ```js
 import {Component} from 'react'
 import withFutureState from 'set-future-state'
@@ -59,6 +81,29 @@ export default withFutureState(
 )
 ```
 
-# API
+`setFutureState()` takes the following 4 arguments:
 
-TODO...
+* **`self`** (required)
+
+  Pass `this` as the first argument, so that `setFutureState()` can update your component's state.
+
+* **`eventual`** (required)
+
+  The second argument should be either:
+
+  * a function that returns a `Promise`. When it resolves, the resolved value will be passed to the **`reducer`**.
+  * a [`Future`](https://github.com/fluture-js/Fluture).
+
+* **`reducer`** (required)
+
+  The third argument should be a function that takes 3 arguments, and returns your updated state. It is called when your **`eventual`** resolves. It works _[exactly like the function form of `setState`](https://reactjs.org/docs/react-component.html#setstate)_: return a partial state object, and it will merge it into your existing state; return `null`, and it will do nothing. The arguments passed to **`reducer`** are:
+
+  * `value`: the resolved value from your **`eventual`** (`Promise` or `Future`)
+  * `prevState`: your component's existing state
+  * `props`: your component's props
+
+* **`onError`** (optional)
+
+  The fourth and final argument is optional: a function that is called if the **`eventual`** (`Promise` or `Future`) rejects. It is called with the rejection reason (ideally an `Error` object).
+
+**IMPORTANT:** If you leave out **`onError`**, your **`reducer`** will be called if the **`eventual`** resolves **AND** if it rejects. This is useful, for example, to remove loading spinners when an ajax call completes, whether or not it was successful.
