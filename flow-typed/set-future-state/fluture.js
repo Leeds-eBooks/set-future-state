@@ -7,6 +7,8 @@ declare class Future<E, V> {
   map<M>(f: (value: V) => M): Future<E, M>;
   mapRej<M>(f: (error: E) => M): Future<M, V>;
 
+  chain<M, F: Future<E, M>>(f: (value: V) => F): F;
+
   fork(onReject: (error: E) => *, onResolve: (value: V) => void): Cancel;
   done(callback: Nodeback<E, V>): Cancel;
 }
