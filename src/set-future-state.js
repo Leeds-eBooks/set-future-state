@@ -9,6 +9,12 @@ const getErrorTarget = ({constructor}) => {
   return name ? `\n\nPlease check the code for the ${name} component.` : ''
 }
 
+const cancelers: WeakMap<
+  // flowlint-next-line unclear-type:off
+  Component<any, any>,
+  $ReadOnlyArray<() => void>
+> = new WeakMap()
+
 type SetFutureState<P, S> = <E, V>(
   self: Component<P, S>,
   eventual: Future<E, V> | (() => Promise<V>),
@@ -19,8 +25,6 @@ type SetFutureState<P, S> = <E, V>(
 export default <P, S>(
   factory: (SetFutureState<P, S>) => Class<Component<P, S>>
 ) => {
-  const cancels: Array<() => void> = []
-
   function setFutureState(self, eventual, reducer, onError) {
     if (!(isFuture(eventual) || typeof eventual === 'function')) {
       throw new TypeError(
@@ -36,10 +40,13 @@ export default <P, S>(
       // $FlowFixMe
       self.setState((prevState, props) => reducer(v, prevState, props))
 
-    cancels.push(
-      onError
-        ? future.fork(onError, resolver)
-        : future.done((e, v) => resolver(v))
+    cancelers.set(
+      self,
+      (cancelers.get(self) || []).concat(
+        onError
+          ? future.fork(onError, resolver)
+          : future.done((e, v) => resolver(v))
+      )
     )
   }
 
@@ -50,7 +57,8 @@ export default <P, S>(
 
     componentWillUnmount() {
       if (super.componentWillUnmount) super.componentWillUnmount()
-      cancels.forEach(fn => fn())
+      const arr = cancelers.get(this)
+      if (arr) arr.forEach(fn => fn())
     }
   }
 }

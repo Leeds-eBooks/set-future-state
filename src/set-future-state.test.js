@@ -330,5 +330,43 @@ describe('setFutureState', () => {
         expect(unmountTracker).toHaveBeenCalledTimes(1)
       })
     })
+
+    describe('cancelers array', () => {
+      it('is unique to each component instance', async () => {
+        const cancel1 = jest.fn()
+        const render1 = renderer.create(
+          // $FlowFixMe
+          React.cloneElement(test, {
+            eventual: future((reject, resolve) => {
+              setTimeout(resolve, 100)
+              return cancel1
+            }),
+          })
+        )
+        const instance1 = render1.getInstance()
+
+        const cancel2 = jest.fn()
+        const render2 = renderer.create(
+          // $FlowFixMe
+          React.cloneElement(test, {
+            eventual: future((reject, resolve) => {
+              setTimeout(resolve, 100)
+              return cancel2
+            }),
+          })
+        )
+        const instance2 = render2.getInstance()
+
+        instance1.trigger()
+
+        instance2.trigger()
+        await wait(3)
+        render2.unmount()
+        await wait(10)
+        expect(unmountTracker).toHaveBeenCalledTimes(1)
+        expect(cancel1).not.toHaveBeenCalled()
+        expect(cancel2).toHaveBeenCalledTimes(1)
+      })
+    })
   })
 })
