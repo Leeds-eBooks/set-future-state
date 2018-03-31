@@ -22,6 +22,27 @@ declare module 'fluture' {
     n: (callback: Nodeback<E, V>) => void
   ): Future<E, V>
 
+  declare export function encaseP<A, E, V>(
+    p: (a: A) => Promise<V>,
+    a: A
+  ): Future<E, V>
+  declare export function encaseP<A, E, V>(
+    p: (a: A) => Promise<V>
+  ): (a: A) => Future<E, V>
+
+  declare export function encaseP2<A, B, E, V>(
+    p: (a: A, b: B) => Promise<V>,
+    a: A,
+    b: B
+  ): Future<E, V>
+  declare export function encaseP2<A, B, E, V>(
+    p: (a: A, b: B) => Promise<V>,
+    a: A
+  ): (b: B) => Future<E, V>
+  declare export function encaseP2<A, B, E, V>(
+    p: (a: A, b: B) => Promise<V>
+  ): (a: A) => (b: B) => Future<E, V>
+
   declare export function encaseN<A, E, V>(
     n: (a: A, callback: Nodeback<E, V>) => void,
     a: A
