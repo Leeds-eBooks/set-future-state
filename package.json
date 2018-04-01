@@ -1,6 +1,6 @@
 {
   "name": "set-future-state",
-  "version": "0.2.0-rc.8",
+  "version": "0.2.0-rc.9",
   "description": "Safely setState in the future",
   "main": "lib/set-future-state.js",
   "module": "lib/set-future-state.esm.js",
