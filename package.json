@@ -5,6 +5,7 @@
   "main": "lib/set-future-state.js",
   "module": "lib/set-future-state.esm.js",
   "esnext": "lib/set-future-state.esm.js",
+  "react-native": "lib/set-future-state.esm.js",
   "files": [
     "lib"
   ],
