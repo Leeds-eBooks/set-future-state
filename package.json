@@ -4,6 +4,7 @@
   "description": "Safely setState in the future",
   "main": "lib/set-future-state.js",
   "module": "lib/set-future-state.esm.js",
+  "esnext": "lib/set-future-state.esm.js",
   "files": [
     "lib"
   ],
