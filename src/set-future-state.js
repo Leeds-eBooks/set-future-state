@@ -9,6 +9,13 @@ const getErrorTarget = ({constructor}) => {
   return name ? `\n\nPlease check the code for the ${name} component.` : ''
 }
 
+if (!WeakMap) {
+  throw new TypeError(
+    '`setFutureState` requires WeakMap to be available. Consider including a polyfill such as core-js.'
+  )
+}
+
+// $FlowFixMe
 const cancelers: WeakMap<
   // flowlint-next-line unclear-type:off
   Component<any, any>,

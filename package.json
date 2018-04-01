@@ -20,7 +20,7 @@
     "test": "jest --silent --coverage",
     "posttest": "jest-coverage-ratchet",
     "test:all": "yarn lint && yarn run flow check && yarn test && yarn run test:lib",
-    "build": "babel src --out-dir lib --ignore src/set-future-state.test.js,src/flow-tests.js && cp src/set-future-state.js.flow lib",
+    "build": "babel src --out-dir lib --ignore src/set-future-state.test.js,src/set-future-state-unsupported.test.js,src/flow-tests.js && cp src/set-future-state.js.flow lib",
     "prepare": "yarn build",
     "release": "release-it"
   },
@@ -87,7 +87,7 @@
         "lines": 100,
         "statements": 100,
         "functions": 100,
-        "branches": 83.33
+        "branches": 85
       }
     }
   },

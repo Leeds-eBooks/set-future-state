@@ -109,3 +109,7 @@ export default withFutureState(
   The fourth and final argument is optional: a function that is called if the **`eventual`** (`Promise` or `Future`) rejects. It is called with the rejection reason (ideally an `Error` object).
 
 **IMPORTANT:** If you leave out **`onError`**, your **`reducer`** will be called if the **`eventual`** resolves **AND** if it rejects. This is useful, for example, to remove loading spinners when an ajax call completes, whether or not it was successful.
+
+# Browser Support
+
+`setFutureState` is transpiled with [Babel](https://babeljs.io/), to support all browsers that ship native `WeakMap` support. You can see a [list of compatible browser versions on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap#Browser_compatibility).
