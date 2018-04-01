@@ -24,5 +24,9 @@
     ],
     "react"
   ],
-  "plugins": ["transform-flow-strip-types", "transform-class-properties"]
+  "plugins": [
+    "transform-flow-strip-types",
+    "transform-class-properties",
+    "add-module-exports"
+  ]
 }
