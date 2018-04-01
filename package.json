@@ -3,6 +3,7 @@
   "version": "0.2.0-rc.5",
   "description": "Safely setState in the future",
   "main": "lib/set-future-state.js",
+  "module": "lib/set-future-state.esm.js",
   "files": [
     "lib"
   ],
@@ -20,7 +21,7 @@
     "test": "jest --silent --coverage",
     "posttest": "jest-coverage-ratchet",
     "test:all": "yarn lint && yarn run flow check && yarn test && yarn run test:lib",
-    "build": "babel src --out-dir lib --ignore src/set-future-state.test.js,src/set-future-state-unsupported.test.js,src/flow-tests.js && cp src/set-future-state.js.flow lib",
+    "build": "babel src --out-dir lib --ignore src/set-future-state.test.js,src/set-future-state-unsupported.test.js,src/flow-tests.js && cp src/set-future-state.js.flow lib && flow-remove-types --pretty src/set-future-state.js > lib/set-future-state.esm.js",
     "prepare": "yarn build",
     "release": "release-it"
   },
@@ -62,6 +63,7 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-react-native": "^3.2.1",
     "flow-bin": "^0.69.0",
+    "flow-remove-types": "^1.2.3",
     "flow-typed": "^2.4.0",
     "jest": "^22.4.3",
     "jest-coverage-ratchet": "^0.2.3",
