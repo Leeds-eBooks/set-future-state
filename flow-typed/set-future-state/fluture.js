@@ -7,6 +7,8 @@ declare class Future<E, V> {
   map<M>(f: (value: V) => M): Future<E, M>;
   mapRej<M>(f: (error: E) => M): Future<M, V>;
 
+  chain<M, F: Future<E, M>>(f: (value: V) => F): F;
+
   fork(onReject: (error: E) => *, onResolve: (value: V) => void): Cancel;
   done(callback: Nodeback<E, V>): Cancel;
 }
@@ -19,6 +21,27 @@ declare module 'fluture' {
   declare export function node<E, V>(
     n: (callback: Nodeback<E, V>) => void
   ): Future<E, V>
+
+  declare export function encaseP<A, E, V>(
+    p: (a: A) => Promise<V>,
+    a: A
+  ): Future<E, V>
+  declare export function encaseP<A, E, V>(
+    p: (a: A) => Promise<V>
+  ): (a: A) => Future<E, V>
+
+  declare export function encaseP2<A, B, E, V>(
+    p: (a: A, b: B) => Promise<V>,
+    a: A,
+    b: B
+  ): Future<E, V>
+  declare export function encaseP2<A, B, E, V>(
+    p: (a: A, b: B) => Promise<V>,
+    a: A
+  ): (b: B) => Future<E, V>
+  declare export function encaseP2<A, B, E, V>(
+    p: (a: A, b: B) => Promise<V>
+  ): (a: A) => (b: B) => Future<E, V>
 
   declare export function encaseN<A, E, V>(
     n: (a: A, callback: Nodeback<E, V>) => void,

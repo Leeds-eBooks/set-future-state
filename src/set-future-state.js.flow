@@ -1,32 +1,14 @@
 // @flow
 
-// eslint-disable-next-line no-unused-vars
-import {Component, PureComponent} from 'react'
+import type {Component} from 'react'
 
-type Eventual<E, V> = Future<E, V> | (() => Promise<V>)
-type Reducer<V, P, S> = (value?: V, prevState: S, props: P) => $Shape<S> | null
-type OnError<E> = E => *
-type Cancels = Array<() => void>
+type SetFutureState<P, S> = <E, V>(
+  self: Component<P, S>,
+  eventual: Future<E, V> | (() => Promise<V>),
+  reducer: (value?: V, prevState: S, props: P) => $Shape<S> | null,
+  onError?: (error: E) => *
+) => void
 
-declare export class ComponentFutureState<P, S> extends Component<P, S> {
-  _cancels: Cancels;
-
-  setFutureState<E, V>(
-    eventual: Eventual<E, V>,
-    reducer: Reducer<V, P, S>,
-    onError?: OnError<E>
-  ): void;
-}
-
-declare export class PureComponentFutureState<P, S> extends PureComponent<
-  P,
-  S
-> {
-  _cancels: Cancels;
-
-  setFutureState<E, V>(
-    eventual: Eventual<E, V>,
-    reducer: Reducer<V, P, S>,
-    onError?: OnError<E>
-  ): void;
-}
+declare export default function withFutureState<P, S>(
+  factory: (setFutureState: SetFutureState<P, S>) => Class<Component<P, S>>
+): Class<Component<P, S>>

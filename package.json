@@ -1,8 +1,11 @@
 {
   "name": "set-future-state",
-  "version": "0.1.3",
+  "version": "0.2.0-rc.9",
   "description": "Safely setState in the future",
   "main": "lib/set-future-state.js",
+  "module": "lib/set-future-state.esm.js",
+  "esnext": "lib/set-future-state.esm.js",
+  "react-native": "lib/set-future-state.esm.js",
   "files": [
     "lib"
   ],
@@ -12,7 +15,7 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "runkitExample": "const {ComponentFutureState} = require('set-future-state')",
+  "runkitExample": "const withFutureState = require('set-future-state')",
   "scripts": {
     "lint": "eslint .",
     "pretest:lib": "yarn build",
@@ -20,7 +23,7 @@
     "test": "jest --silent --coverage",
     "posttest": "jest-coverage-ratchet",
     "test:all": "yarn lint && yarn run flow check && yarn test && yarn run test:lib",
-    "build": "babel src --out-dir lib --ignore src/set-future-state.test.js,src/flow-tests.js && cp src/set-future-state.js.flow lib",
+    "build": "babel src --out-dir lib --ignore src/set-future-state.test.js,src/set-future-state-unsupported.test.js,src/flow-tests.js && cp src/set-future-state.js.flow lib && flow-remove-types --pretty src/set-future-state.js > lib/set-future-state.esm.js",
     "prepare": "yarn build",
     "release": "release-it"
   },
@@ -47,6 +50,7 @@
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.3",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-env": "^1.6.1",
@@ -62,6 +66,7 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-react-native": "^3.2.1",
     "flow-bin": "^0.69.0",
+    "flow-remove-types": "^1.2.3",
     "flow-typed": "^2.4.0",
     "jest": "^22.4.3",
     "jest-coverage-ratchet": "^0.2.3",
@@ -87,12 +92,13 @@
         "lines": 100,
         "statements": 100,
         "functions": 100,
-        "branches": 91.67
+        "branches": 85
       }
     }
   },
   "dependencies": {
-    "fluture": "^8.0.2"
+    "fluture": "^8.0.2",
+    "recompose": "^0.26.0"
   },
   "peerDependencies": {
     "react": "^16.0.0"
