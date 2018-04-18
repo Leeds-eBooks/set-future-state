@@ -5,7 +5,7 @@ type Cancel = () => void
 type Nodeback<E, V> = (error: ?E, value?: V) => void
 
 // NOTE: any changes here must be reflected in set-future-state.js.flow
-declare class Future<E, V> {
+declare interface Future<E, V> {
   map<M>(f: (value: V) => M): Future<E, M>;
   mapRej<M>(f: (error: E) => M): Future<M, V>;
 

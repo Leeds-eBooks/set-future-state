@@ -9,7 +9,7 @@ type Nodeback<E, V> = (error: ?E, value?: V) => void
 
 // NOTE: any changes here must be reflected in
 // flow-typed/set-future-state/fluture.js
-declare class Future<E, V> {
+declare interface Future<E, V> {
   map<M>(f: (value: V) => M): Future<E, M>;
   mapRej<M>(f: (error: E) => M): Future<M, V>;
 
