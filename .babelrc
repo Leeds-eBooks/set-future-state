@@ -1,32 +1,51 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "targets": {
-          "browsers": [
-            "Chrome >= 36",
-            "Edge >= 12",
-            "Firefox >= 6",
-            "Explorer >= 11",
-            "Opera >= 23",
-            "Safari >= 8",
-            "Android >= 36",
-            "ChromeAndroid >= 36",
-            "FirefoxAndroid >= 6",
-            "ExplorerMobile >= 11",
-            "OperaMobile >= 23",
-            "iOS >= 8"
-          ],
-          "node": "6"
-        }
-      }
-    ],
-    "react"
-  ],
-  "plugins": [
-    "transform-flow-strip-types",
-    "transform-class-properties",
-    "add-module-exports"
-  ]
+  "env": {
+    "es5": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": [
+                "Chrome >= 36",
+                "Edge >= 12",
+                "Firefox >= 6",
+                "Explorer >= 11",
+                "Opera >= 23",
+                "Safari >= 8",
+                "Android >= 36",
+                "ChromeAndroid >= 36",
+                "FirefoxAndroid >= 6",
+                "ExplorerMobile >= 11",
+                "OperaMobile >= 23",
+                "iOS >= 8"
+              ],
+              "node": "6"
+            }
+          }
+        ],
+        "react"
+      ],
+      "plugins": [
+        "transform-flow-strip-types",
+        "transform-class-properties",
+        "add-module-exports"
+      ]
+    },
+    "es6": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "9"
+            },
+            "modules": false
+          }
+        ],
+        "react"
+      ],
+      "plugins": ["transform-flow-strip-types", "transform-class-properties"]
+    }
+  }
 }

@@ -22,8 +22,11 @@
     "test:lib": "jest --silent --config=\"{\\\"moduleNameMapper\\\":{\\\"^./set-future-state$\\\":\\\"<rootDir>/lib/set-future-state\\\"}}\"",
     "test": "jest --silent --coverage",
     "posttest": "jest-coverage-ratchet",
-    "test:all": "yarn lint && yarn run flow check && yarn test && yarn run test:lib",
-    "build": "babel src --out-dir lib --ignore src/set-future-state.test.js,src/set-future-state-unsupported.test.js,src/flow-tests.js && cp src/set-future-state.js.flow lib && flow-remove-types --pretty src/set-future-state.js > lib/set-future-state.esm.js",
+    "test:all": "export BABEL_ENV=es5 yarn lint && yarn run flow check && yarn test && yarn run test:lib",
+    "build:es5": "BABEL_ENV=es5 babel src/set-future-state.js --out-file lib/set-future-state.js",
+    "build:es6": "BABEL_ENV=es6 babel src/set-future-state.js --out-file lib/set-future-state.esm.js",
+    "build": "yarn build:es5 && yarn build:es6",
+    "postbuild": "cp src/set-future-state.js.flow lib",
     "prepare": "yarn build",
     "release": "release-it"
   },
