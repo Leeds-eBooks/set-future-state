@@ -7,7 +7,6 @@
   "esnext": "lib/set-future-state.esm.js",
   "react-native": "lib/set-future-state.esm.js",
   "files": [
-    "flow-typed",
     "lib"
   ],
   "engines": {

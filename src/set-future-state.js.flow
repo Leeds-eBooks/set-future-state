@@ -2,6 +2,23 @@
 
 import type {Component} from 'react'
 
+// NOTE: any changes here must be reflected in
+// flow-typed/set-future-state/fluture.js
+type Cancel = () => void
+type Nodeback<E, V> = (error: ?E, value?: V) => void
+
+// NOTE: any changes here must be reflected in
+// flow-typed/set-future-state/fluture.js
+declare class Future<E, V> {
+  map<M>(f: (value: V) => M): Future<E, M>;
+  mapRej<M>(f: (error: E) => M): Future<M, V>;
+
+  chain<M, F: Future<E, M>>(f: (value: V) => F): F;
+
+  fork(onReject: (error: E) => *, onResolve: (value: V) => void): Cancel;
+  done(callback: Nodeback<E, V>): Cancel;
+}
+
 type SetFutureState<P, S> = <E, V>(
   self: Component<P, S>,
   eventual: Future<E, V> | (() => Promise<V>),
