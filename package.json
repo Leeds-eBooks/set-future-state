@@ -100,7 +100,7 @@
     }
   },
   "dependencies": {
-    "fluture": "^8.0.2",
+    "fluture": "^9.0.0",
     "recompose": "^0.26.0"
   },
   "peerDependencies": {
