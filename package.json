@@ -25,6 +25,7 @@
     "test:all": "export BABEL_ENV=es5 yarn lint && yarn run flow check && yarn test && yarn run test:lib",
     "build:es5": "BABEL_ENV=es5 babel src/set-future-state.js --out-file lib/set-future-state.js",
     "build:es6": "BABEL_ENV=es6 babel src/set-future-state.js --out-file lib/set-future-state.esm.js",
+    "prebuild": "mkdir -p lib",
     "build": "yarn build:es5 && yarn build:es6",
     "postbuild": "cp src/set-future-state.js.flow lib",
     "prepare": "yarn build",
