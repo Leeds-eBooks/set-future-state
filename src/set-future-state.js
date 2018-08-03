@@ -26,7 +26,7 @@ type SetFutureState<P, S> = <E, V>(
   self: Component<P, S>,
   eventual: Future<E, V> | (() => Promise<V>),
   reducer: (value?: V, prevState: S, props: P) => $Shape<S> | null,
-  onError?: (error: E) => *
+  onError?: (error: E) => mixed
 ) => void
 
 export default <P, S>(
