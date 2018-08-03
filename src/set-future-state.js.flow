@@ -15,7 +15,7 @@ declare interface Future<E, V> {
 
   chain<M, F: Future<E, M>>(f: (value: V) => F): F;
 
-  fork(onReject: (error: E) => *, onResolve: (value: V) => void): Cancel;
+  fork(onReject: (error: E) => mixed, onResolve: (value: V) => void): Cancel;
   done(callback: Nodeback<E, V>): Cancel;
 }
 
@@ -23,7 +23,7 @@ type SetFutureState<P, S> = <E, V>(
   self: Component<P, S>,
   eventual: Future<E, V> | (() => Promise<V>),
   reducer: (value?: V, prevState: S, props: P) => $Shape<S> | null,
-  onError?: (error: E) => *
+  onError?: (error: E) => mixed
 ) => void
 
 declare export default function withFutureState<P, S>(
