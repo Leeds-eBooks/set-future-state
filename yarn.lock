@@ -2515,14 +2515,14 @@ fluture@^6.1.0:
     sanctuary-type-classes "^6.0.0"
     sanctuary-type-identifiers "^2.0.0"
 
-fluture@^8.0.2:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/fluture/-/fluture-8.0.2.tgz#015f8b36b994188fb33d3bfa0da327b520a5e047"
+fluture@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/fluture/-/fluture-9.0.1.tgz#4eb4603a82445969c421c578be780a97a369e4d6"
   dependencies:
     concurrify "^1.0.0"
     denque "^1.1.1"
-    inspect-f "^1.2.0"
-    sanctuary-type-classes "^8.0.0"
+    sanctuary-show "^1.0.0"
+    sanctuary-type-classes "^9.0.0"
     sanctuary-type-identifiers "^2.0.0"
 
 for-in@^1.0.1, for-in@^1.0.2:
@@ -5381,6 +5381,10 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
+sanctuary-show@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-show/-/sanctuary-show-1.0.0.tgz#72deb4812f9decec850e03286807dca1c97a1d61"
+
 sanctuary-type-classes@^6.0.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/sanctuary-type-classes/-/sanctuary-type-classes-6.1.0.tgz#6bd67044358c8440d561e6e2556ab88dd8cd8001"
@@ -5390,6 +5394,12 @@ sanctuary-type-classes@^6.0.0:
 sanctuary-type-classes@^8.0.0:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/sanctuary-type-classes/-/sanctuary-type-classes-8.1.1.tgz#238e3a9ca675c07de7cadfbf8ef1f98f37c6890b"
+  dependencies:
+    sanctuary-type-identifiers "1.0.x"
+
+sanctuary-type-classes@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-type-classes/-/sanctuary-type-classes-9.0.0.tgz#b44741ca67fa650cbd314e1ad318d730ce1309a4"
   dependencies:
     sanctuary-type-identifiers "1.0.x"
 
