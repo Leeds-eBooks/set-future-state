@@ -8,24 +8,24 @@ import withFutureState from './set-future-state'
 const wait = (ms: number): Promise<void> =>
   new Promise(resolve => setTimeout(resolve, ms))
 
-type Props = {
-  // flowlint-next-line unclear-type:off
-  eventual: Future<any, any> | (() => Promise<any>),
-  reducer: *,
-  onError?: *,
-}
-
 type State = {
   loading: boolean,
   v?: mixed,
   props?: {},
 }
 
+type Props<V> = {
+  // flowlint-next-line unclear-type:off
+  eventual: Future<any, ?V> | (() => Promise<?V>),
+  reducer: (?V, State) => mixed,
+  onError?: () => mixed,
+}
+
 const unmountTracker = jest.fn()
 
 const Test = withFutureState(
   setFutureState =>
-    class TestBase extends PureComponent<Props, State> {
+    class TestBase<V> extends PureComponent<Props<V>, State> {
       state = {loading: false}
 
       componentWillUnmount() {
@@ -34,6 +34,7 @@ const Test = withFutureState(
 
       trigger() {
         setFutureState(
+          // $FlowFixMe
           this,
           this.props.eventual,
           this.props.reducer,

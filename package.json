@@ -1,6 +1,6 @@
 {
   "name": "set-future-state",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Safely setState in the future",
   "main": "lib/set-future-state.js",
   "module": "lib/set-future-state.esm.js",
@@ -25,6 +25,7 @@
     "test:all": "export BABEL_ENV=es5 yarn lint && yarn run flow check && yarn test && yarn run test:lib",
     "build:es5": "BABEL_ENV=es5 babel src/set-future-state.js --out-file lib/set-future-state.js",
     "build:es6": "BABEL_ENV=es6 babel src/set-future-state.js --out-file lib/set-future-state.esm.js",
+    "prebuild": "mkdir -p lib",
     "build": "yarn build:es5 && yarn build:es6",
     "postbuild": "cp src/set-future-state.js.flow lib",
     "prepare": "yarn build",
@@ -52,23 +53,23 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
-    "babel-jest": "^22.4.3",
-    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-jest": "^23.0.1",
+    "babel-plugin-add-module-exports": "^0.3.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "eslint": "^4.19.1",
+    "eslint": "^5.0.1",
     "eslint-config-mealsup": "^2.5.2",
     "eslint-plugin-babel": "^5.0.0",
-    "eslint-plugin-eslint-comments": "^2.0.2",
+    "eslint-plugin-eslint-comments": "^3.0.1",
     "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-react-native": "^3.2.1",
-    "flow-bin": "^0.70.0",
+    "flow-bin": "^0.77.0",
     "flow-remove-types": "^1.2.3",
     "flow-typed": "^2.4.0",
     "jest": "^22.4.3",
@@ -100,8 +101,8 @@
     }
   },
   "dependencies": {
-    "fluture": "^8.0.2",
-    "recompose": "^0.26.0"
+    "fluture": "^9.0.1",
+    "recompose": "^0.28.1"
   },
   "peerDependencies": {
     "react": "^16.0.0"
