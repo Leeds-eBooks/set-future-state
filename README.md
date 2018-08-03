@@ -85,26 +85,26 @@ export default withFutureState(
 
 `setFutureState()` takes the following 4 arguments:
 
-* **`self`** (required)
+- **`self`** (required)
 
   Pass `this` as the first argument, so that `setFutureState()` can update your component's state.
 
-* **`eventual`** (required)
+- **`eventual`** (required)
 
   The second argument should be either:
 
-  * a function that returns a `Promise`. When it resolves, the resolved value will be passed to the **`reducer`**.
-  * a [`Future`](https://github.com/fluture-js/Fluture).
+  - a function that returns a `Promise`. When it resolves, the resolved value will be passed to the **`reducer`**.
+  - a [`Future`](https://github.com/fluture-js/Fluture).
 
-* **`reducer`** (required)
+- **`reducer`** (required)
 
   The third argument should be a function that takes 3 arguments, and returns your updated state. It is called when your **`eventual`** resolves. It works _[exactly like the function form of `setState`](https://reactjs.org/docs/react-component.html#setstate)_: return a partial state object, and it will merge it into your existing state; return `null`, and it will do nothing. The arguments passed to **`reducer`** are:
 
-  * `value`: the resolved value from your **`eventual`** (`Promise` or `Future`)
-  * `prevState`: your component's existing state
-  * `props`: your component's props
+  - `value`: the resolved value from your **`eventual`** (`Promise` or `Future`)
+  - `prevState`: your component's existing state
+  - `props`: your component's props
 
-* **`onError`** (optional)
+- **`onError`** (optional)
 
   The fourth and final argument is optional: a function that is called if the **`eventual`** (`Promise` or `Future`) rejects. It is called with the rejection reason (ideally an `Error` object).
 
