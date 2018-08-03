@@ -47,7 +47,7 @@ declare export default function withFutureState<P, S>(
 `withFutureState()` is an [Inheritance Inversion Higher-Order Component](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#5247). It takes a single argument, a factory function, which must return a React Class Component (i.e. a [class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) that inherits from `React.Component` or `React.PureComponent`). The factory function receives a single argument, `setFutureState`: your tool for safely updating your component's state in the future.
 
 ```js
-import {Component} from 'react'
+import React, {Component} from 'react'
 import withFutureState from 'set-future-state'
 
 export default withFutureState(
