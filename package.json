@@ -102,7 +102,7 @@
   },
   "dependencies": {
     "fluture": "^9.0.1",
-    "recompose": "^0.28.1"
+    "recompose": "^0.30.0"
   },
   "peerDependencies": {
     "react": "^16.0.0"
