@@ -76,7 +76,7 @@
     "jest-coverage-ratchet": "^0.2.3",
     "react": "^16.0.0",
     "react-test-renderer": "^16.2.0",
-    "release-it": "^7.2.1"
+    "release-it": "^9.4.4"
   },
   "prettier": {
     "singleQuote": true,
